@@ -11,7 +11,7 @@ You can enable developer mode in a chat to allow you as a developer to understan
 ```
 - Next to test, send a prompt to interact with the agent like the one below.
 
-*Find out what Karin is working on.*
+   *Find out what Karin is working on.*
 
 - You will get a response with information from the repair service but also get the **Agent debug info** card along with the response.
 - Expand the **Agent debug info** card to view all the details.
