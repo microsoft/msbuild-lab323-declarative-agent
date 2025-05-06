@@ -7,8 +7,8 @@ Copy and paste the following line into the chat with your agent to enable debugg
 -developer on
 Next to test, send a prompt to interact with the agent like the one below.
 Find out what Karin is working on.
-You will get a response but also get the Agent debug info
-Expand the card of the Agent debug info to view all the details.
+You will get a response but also get the **Agent debug info**.
+Expand the card of the **Agent debug info** to view all the details.
 You will be able to see: 
 -	Agent information
 -	Capabilities of the agent

@@ -37,7 +37,7 @@ how to improve efficiency for each problem.
 Let’s take the updated agent who is also now a repairs analyst to test. 
 Select the Agent Toolkit extension to open its activity bar from within your project.
 In the activity bar of the toolkit under “LifeCycle” select “Provision” to package and upload the newly updated agent for testing. 
-Next, go to https://office.com/chat to open Copilot app and select the RepairServiceAgent from the right side of the screen under Agents.
+Next, go to https://office.com/chat to open Copilot app and select the RepairServiceAgent from the right side of the screen under **Agents**.
 Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
 
 *Classify repair items into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*
