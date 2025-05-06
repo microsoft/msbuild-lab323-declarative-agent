@@ -344,12 +344,15 @@ Check this table to understand the decorators used in main.tsp file.
 ## Step 5: Test your agent
 
 Next step is to test the Repair Service Agent. 
-Select the Agent Toolkit extension, to open the activity bar from within your project.
-In the activity bar of the toolkit under “LifeCycle” select “Provision”. 
-This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
-Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
-Next, go to https://m365.cloud.microsoft/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
-Select a conversation starter like “List repairs” and see check out the response.
+
+- Select the Agent Toolkit extension, to open the activity bar from within your project.
+- In the activity bar of the toolkit under “LifeCycle” select “Provision”. This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
+
+> 💡 **Note**  
+> Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
+
+- Next, go to https://m365.cloud.microsoft/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+- Select a conversation starter like “List repairs” and see check out the response.
 
 
 > 💡 **Tip**  
