@@ -1,7 +1,7 @@
 # Exercise 1:  Build your first agent using Microsoft 365 Agents Toolkit
 
 So far what you did was set up the environment to build agents. It’s time to build your first declarative agent using Microsoft 365 Agents Toolkit. 
-You will create an agent called RepairServiceAgent, which interacts with repairs data via an API service to help users manage car repair records.
+You will create an agent called **RepairServiceAgent**, which interacts with repairs data via an API service to help users manage car repair records.
 So, let’s get to it step by step.
 ## Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit
 -	Locate the Microsoft 365 Agents Toolkit icon from the VS Code menu on the left and select it. An activity bar will be open. 
@@ -10,7 +10,11 @@ So, let’s get to it step by step.
 -	Next, select “Start with TypeSpec for Microsoft 365 Copilot” to define your agent using TypeSpec.
 -	Next, select the folder where you want the toolkit to scaffold the agent project.
 -	Next, give an application name like - “RepairServiceAgent” and select Enter to complete the process. You will get a new VSCode window with the agent project preloaded.
-Step 2: Sign into the Microsoft 365 Agents Toolkit 
+
+## Step 2: Sign into the Microsoft 365 Agents Toolkit 
+
+You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and test your agent from within the toolkit.
+
 -	In project window, select the Microsoft 365 Agents Toolkit icon again from the left side menu. This will open the toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
 -	Under Accounts section select “Sign in to Microsoft 365”. This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or cancel. Select “Sign in”. 
 -	In the virtual machine, the credentials to log into the Microsoft 365 tenant will be given in the same “Resources” panel where this instruction is, under title “Azure portal”. Use the username and password provided. Make sure you use the copy text instruction.
@@ -25,6 +29,7 @@ In the main.tsp file you will find the basic structure of the file. Review the c
 -	Agent name and description
 -	Basic instructions
 -	Placeholder code (commented out)
+
 Now let’s us start defining our agent. Replace the contents in the default file and paste below snippet to define the agent’s metadata
 
 ```
@@ -63,6 +68,16 @@ As you can see, you have defined name, description, system prompt/instructions a
 
 In our case, we need to also add our Repair Service logic than just instructions. To do that let us now paste below code snippet to define operations and data model of your service for your agent.
 
+For that we will add a *RepairServiceAgent* namespace, which will have the full service definition including:
+- @service and @skill metadata
+- @server information (name and host url for the API)
+- Operations and their definitions under namespace *RepairsHub*
+  - listRepairs
+  - createRepair
+  - updateRepair
+  - deleteRepair
+- Repair model
+- OrchestratorState enum
 
 
 ```
@@ -294,10 +309,7 @@ actions: #[
 }
 ```
 
-Inside the RepairServiceAgent namespace, add the full service definition including:
-@service and @skill metadata
-Operations: listRepairs, createRepair, updateRepair, deleteRepair
-The Repair model and orchestratorState enum
+
 
 Your agent should now be fully defined with metadata, instructions, and operational logic.
 
@@ -322,21 +334,24 @@ Check this table to understand the decorators used in main.tsp file.
 | `@agent`              | Defines the namespace (name) and description of the agent                                                                                                       |
 | `@instructions`       | Defines the instructions that prescribe the behaviour of the agent. 8000 characters or less                                                                     |
 | `@conversationStarter`| Defines conversation starters for the agent                                                                                                                     |
-| `@op`                 | Defines any operation. Either it can be an operation to define agent’s capabilities like `op GraphicArt`, `op CodeInterpreter` etc., or define API operations like `op listRepairs`. For a post operation, define it like: `op createRepair(@body repair: Repair): Repair; |
-`                                                                          |
+| `@op`                 | Defines any operation. Either it can be an operation to define agent’s capabilities like `op GraphicArt`, `op CodeInterpreter` etc., or define API operations like `op listRepairs`. For a post operation, define it like: `op createRepair(@body repair: Repair): Repair;                                                                                                                 |
 | `@skill`              | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
 | `@server`             | Defines the server endpoint of the API and its name                                                                                                              |
 | `@state`              | Defines reasoning and responding states of the orchestrator of any function                                                                                     |
 | `@capabilities`       | When used inside a function, it defines simple adaptive cards with small definitions like a confirmation card for the operation                                  |
 
-Step 5: Test your agent
+## Step 5: Test your agent
+
 Next step is to test the Repair Service Agent. 
-Select the Agent Toolkit extension, to open the activity bar from within your project.
-In the activity bar of the toolkit under “LifeCycle” select “Provision”. 
-This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
-Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
-Next, go to https://m365.cloud.microsoft/chat to open Copilot app and select the RepairServiceAgent from the right side of the screen under Agents.
-Select a conversation starter like “List repairs” and see check out the response.
+
+- Select the Agent Toolkit extension, to open the activity bar from within your project.
+- In the activity bar of the toolkit under “LifeCycle” select “Provision”. This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
+
+> 💡 **Note**  
+> Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
+
+- Next, go to https://m365.cloud.microsoft/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+- Select a conversation starter like “List repairs” and see check out the response.
 
 
 > 💡 **Tip**  
