@@ -1,3 +1,5 @@
+# Exercise 2:  Enhance Agent using TypeSpec for new capability
+
 Next, you will enhance the agent's capabilities to not only consume the API for reading or updating data for the repair service but also to transform the agent into an analyst. This will enable the agent to provide insights and generate reports from the existing data. Proceed with the following updates to the main.tsp file:
 
 ## Step 1: Modify agent typespec file

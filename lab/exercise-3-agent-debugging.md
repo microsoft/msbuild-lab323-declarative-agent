@@ -1,3 +1,5 @@
+# Exercise 3: Diagnosing and Debugging Agent
+
 You can enable developer mode in a chat to allow you as a developer to understand how well the agent understands the tasks, ensure it calls your services appropriately, identify areas that need fine-tuning, detect performance issues, and generally help you track and analyse its interactions.
 
 ## Step 1: Agent debugging in the chat
