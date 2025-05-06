@@ -1,3 +1,5 @@
+# Exercise 1:  Build your first agent using Microsoft 365 Agents Toolkit
+
 So far what you did was set up the environment to build agents. It’s time to build your first declarative agent using Microsoft 365 Agents Toolkit. 
 You will create an agent called RepairServiceAgent, which interacts with repairs data via an API service to help users manage car repair records.
 So, let’s get to it step by step.
