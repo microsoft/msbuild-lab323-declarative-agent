@@ -68,6 +68,15 @@ As you can see, you have defined name, description, system prompt/instructions a
 
 In our case, we need to also add our Repair Service logic than just instructions. To do that let us now paste below code snippet to define operations and data model of your service for your agent.
 
+For that we will add a *RepairServiceAgent* namespace, which will have the full service definition including:
+- @service and @skill metadata
+- Operations of the API service along with their capabilities
+  - listRepairs
+  - createRepair
+  - updateRepair
+  - deleteRepair
+- Repair model
+- OrchestratorState enum
 
 
 ```
@@ -299,9 +308,7 @@ actions: #[
 }
 ```
 
-Inside the *RepairServiceAgent* namespace, add the full service definition including:
-@service and @skill metadata
-Operations: listRepairs, createRepair, updateRepair, deleteRepair, the Repair model and orchestratorState enum
+
 
 Your agent should now be fully defined with metadata, instructions, and operational logic.
 
