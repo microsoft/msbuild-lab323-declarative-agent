@@ -70,7 +70,8 @@ In our case, we need to also add our Repair Service logic than just instructions
 
 For that we will add a *RepairServiceAgent* namespace, which will have the full service definition including:
 - @service and @skill metadata
-- Operations of the API service along with their capabilities
+- @server information (name and host url for the API)
+- Operations and their definitions under namespace *RepairsHub*
   - listRepairs
   - createRepair
   - updateRepair
@@ -334,7 +335,7 @@ Check this table to understand the decorators used in main.tsp file.
 | `@instructions`       | Defines the instructions that prescribe the behaviour of the agent. 8000 characters or less                                                                     |
 | `@conversationStarter`| Defines conversation starters for the agent                                                                                                                     |
 | `@op`                 | Defines any operation. Either it can be an operation to define agent’s capabilities like `op GraphicArt`, `op CodeInterpreter` etc., or define API operations like `op listRepairs`. For a post operation, define it like: `op createRepair(@body repair: Repair): Repair; |
-`                                                                          |
+
 | `@skill`              | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
 | `@server`             | Defines the server endpoint of the API and its name                                                                                                              |
 | `@state`              | Defines reasoning and responding states of the orchestrator of any function                                                                                     |
