@@ -222,12 +222,12 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 
 - Start by using the conversation starter 'Create repair'. Add a title to the prompt, then send it to the chat to initiate the interaction. 
 
- +++Create a new repair titled "New brake issue" and assign it to me.+++ 
-
+ +++*Create a new repair titled "New brake issue" and assign it to me.*+++ 
+  
 - You will get a confirmation dialog, proceed to confirm. The agent will add the item and send the response adaptive card back to you. 
 - Next, send the prompt below to recheck if item is added. 
 
-+++List all my repairs+++
+ +++*List all my repairs.*+++
 
 
 > Note that the create/update and delete operations are only in memory for this sample. 
