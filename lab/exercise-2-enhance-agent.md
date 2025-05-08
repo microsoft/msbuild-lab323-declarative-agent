@@ -96,7 +96,7 @@ Let’s also add a new conversation starter for creating a new repair item just 
 ## Step 2: Add adaptive card to function reference
 
 Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the listRepairs operation and add an adaptive card for the repair item. 
-In the project folder, create a new folder called “cards” under the “appPackage” folder. Create a file repair.json in the cards folder and paste the code snippet as is from below to the file. 
+In the project folder, create a new folder called "cards" under the "appPackage" folder. Create a file repair.json in the cards folder and paste the code snippet as is from below to the file. 
 
 ```json
 {
@@ -218,12 +218,12 @@ You will assist the user in finding car repair records based on the information 
 Let’s take the updated agent who is also now a repairs analyst to test. 
 
 - Select the agents toolkit's extension icon to open its activity bar from within your project.
-- In the activity bar of the toolkit under “LifeCycle” select “Provision” to package and upload the newly updated agent for testing. 
+- In the activity bar of the toolkit under "LifeCycle" select "Provision" to package and upload the newly updated agent for testing. 
 - Next, go to [https://office.com/chat](https://office.com/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 
 - Start by using the conversation starter 'Create repair'. Replace parts of the prompt to add a title , then send it to the chat to initiate the interaction. For e.g.
 
-    +++*Create a new repair titled "New brake issue" and assign it to me.*+++ 
+    `Create a new repair titled "New brake issue" and assign it to me.`
   
 - You will get a confirmation dialog to confirm, proceed to confirm.
 
@@ -237,7 +237,7 @@ Let’s take the updated agent who is also now a repairs analyst to test.
   
 - Next, send the prompt below to recheck if item is added. 
 
-    +++*List all my repairs.*+++
+    `List all my repairs.`
 
 ![incomplete-item](https://github.com/user-attachments/assets/e58d3762-ee72-4fe7-b28e-21062bc67d59)
 
@@ -258,7 +258,7 @@ You'll see that the newly created item has been sent, but it’s missing both a 
 
 - To test this new update, create another item. 
 
-    +++*Create a new repair titled "rear camera issue" and assign it to me.*+++ 
+    `Create a new repair titled "rear camera issue" and assign it to me.`
 
 - The confirmation dialog if you notice has more metadata. Proceed to add the item by confirming the dialog.
 
@@ -267,7 +267,7 @@ You'll see that the newly created item has been sent, but it’s missing both a 
 
  Again recheck if item is added with description and date.
 
-    +++*List all my repairs.*+++
+  `List all my repairs.`
 
 ![prefilled-item](https://github.com/user-attachments/assets/e9564512-fa34-47ea-9130-9cbe1f2f92b5)
 
@@ -276,7 +276,7 @@ You've successfully guided the agent to better recognize and address minor short
 
 - Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
 
-    +++*Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*+++
+    `Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.`
 
 You should get some response similar to below screen. It may vary sometimes. 
 
