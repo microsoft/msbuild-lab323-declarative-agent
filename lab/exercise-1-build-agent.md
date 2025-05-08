@@ -5,7 +5,7 @@ You will create an agent called **RepairServiceAgent**, which interacts with rep
 
 
 ## Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit
--	Locate the Microsoft 365 Agents Toolkit icon <img src="./images/exercise-1/m365atk-icon.png" alt="description" width="24"/> from the VS Code menu on the left and select it. An activity bar will be open. 
+-	Locate the Microsoft 365 Agents Toolkit icon <img src="https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/m365atk-icon.png?raw=true" alt="m365 agents toolkit icon" width="24"/> from the VS Code menu on the left and select it. An activity bar will be open. 
 -	Select the “Create a New Agent/App” button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.
 -	Choose “Declarative Agent” from the list of templates.
 -	Next, select “Start with TypeSpec for Microsoft 365 Copilot” to define your agent using TypeSpec.
@@ -16,7 +16,7 @@ You will create an agent called **RepairServiceAgent**, which interacts with rep
 
 You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and test your agent from within it.
 
--	Within the project window, select the Microsoft 365 Agents Toolkit icon <img src="./images/exercise-1/m365atk-icon.png" alt="description" width="24"/> again from the left side menu. This will open the agent toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
+-	Within the project window, select the Microsoft 365 Agents Toolkit icon <img src="https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/m365atk-icon.png?raw=true" alt="m365 agents toolkit icon" width="24"/> again from the left side menu. This will open the agent toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
 -	Under "Accounts" section select “Sign in to Microsoft 365”. This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or Cancel. Select “Sign in”. 
 -	In the virtual machine, the credentials to log into the Microsoft 365 tenant will be given in the same “Resources” panel where this instruction is, under title “Azure portal”. Use the username and password provided. Make sure you use the copy text instruction.
 -	Once signed in, close the browser and go back to the project window.
