@@ -144,13 +144,13 @@ Check this table to understand some of the decorators used in these files
 
 | Annotation             | Description                                                                                                                                                     |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `@agent`              | Defines the namespace (name) and description of the agent                                                                                                       |
-| `@instructions`       | Defines the instructions that prescribe the behaviour of the agent. 8000 characters or less                                                                     |
-| `@conversationStarter`| Defines conversation starters for the agent                                                                                                                     |
-| `@op`                 | Defines any operation. Either it can be an operation to define agent’s capabilities like `op GraphicArt`, `op CodeInterpreter` etc., or define API operations like `op listRepairs`. For a post operation, define it like: `op createRepair(@body repair: Repair): Repair;                                                                                                                 |
-| `@actions`              | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
-| `@server`             | Defines the server endpoint of the API and its name                                                                                                              |
-| `@capabilities`       | When used inside a function, it defines simple adaptive cards with small definitions like a confirmation card for the operation                                  |
+| @agent             | Defines the namespace (name) and description of the agent                                                                                                       |
+| @instructions       | Defines the instructions that prescribe the behaviour of the agent. 8000 characters or less                                                                     |
+| @conversationStarter | Defines conversation starters for the agent                                                                                                                     |
+| @op            | Defines any operation. Either it can be an operation to define agent’s capabilities like **op GraphicArt**, **op CodeInterpreter** etc., or define API operations like **op listRepairs**. For a post operation, define it like: **op createRepair(@body repair: Repair): Repair; **                                                                                                                |
+| @actions             | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
+| @server           | Defines the server endpoint of the API and its name                                                                                                              |
+| @capabilities      | When used inside a function, it defines simple adaptive cards with small definitions like a confirmation card for the operation                                  |
 
 ## Step 5: Test your agent
 
