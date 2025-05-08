@@ -76,7 +76,7 @@ Next, we’ll enhance this agent by adding more operations, enabling responses w
 We have defined the new operations as well as the data model for a repair item. 
 
 Let’s go back to main.tsp file and make sure these new operations are also added into the agent's action.
-Paste the below snippet after `op listRepairs is global.RepairsAPI.listRepairs;` inside the "RepairServiceActions" namespace
+Paste the below snippet after *op listRepairs is global.RepairsAPI.listRepairs;* inside the "RepairServiceActions" namespace
 
 ```
 op createRepair is global.RepairsAPI.createRepair;
@@ -150,7 +150,7 @@ In the project folder, create a new folder called “cards” under the “appPa
 ```
 
 Next, go back to actions.tsp file and locate the listRepairs operation.
-Just above the operation definition `@get  op listRepairs(@query assignedTo?: string): string;`, paste the card definition using below snippet.
+Just above the operation definition *@get  op listRepairs(@query assignedTo?: string): string;*, paste the card definition using below snippet.
 
 ```
   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
@@ -221,18 +221,18 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 - Next, go to https://office.com/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 
 - Start by using the conversation starter 'Create repair'. Add a title to the prompt, then send it to the chat to initiate the interaction. 
-```
- Create a new repair titled "New brake issue" and assign it to me. 
-```
+
+ +++Create a new repair titled "New brake issue" and assign it to me.+++ 
+
 - You will get a confirmation dialog, proceed to confirm. The agent will add the item and send the response adaptive card back to you. 
 - Next, send the prompt below to recheck if item is added. 
-```
-List all my repairs
-```
+
++++List all my repairs+++
+
 
 > Note that the create/update and delete operations are only in memory for this sample. 
 
 
 - Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
 
-*Classify repair items into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*
+ +++*Classify repair items into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*+++
