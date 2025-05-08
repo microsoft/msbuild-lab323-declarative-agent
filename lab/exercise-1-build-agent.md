@@ -40,7 +40,8 @@ In the main.tsp file you will find the basic structure of the file. Review the c
 -	Basic instructions 2️⃣
 -	Placeholder code for actions and capabilities (commented out) 3️⃣
 
-<img width="1260" alt="main-default" src="https://github.com/user-attachments/assets/2ce0f768-ff30-442b-94bf-19d537f5638b" />
+![agent template](https://github.com/user-attachments/assets/42da513c-d814-456f-b60f-a4d9201d1620)
+
 
 
 Begin by defining your agent for the repair scenario. Replace the "@agent" and "@instructions" definitions with below code snippet
