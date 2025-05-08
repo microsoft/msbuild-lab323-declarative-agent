@@ -1,10 +1,10 @@
 # What are Declarative Agents? 
 
-**Declarative agents** leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs. They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat while ensuring they focus exclusively on the specific task at hand.
+**Declarative Agents** leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs. They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat while ensuring they focus exclusively on the specific task at hand.
 
 ## Anatomy of a Declarative Agent
 
-As you build more Copilot extensions, you’ll notice that the final output is a set of a few files bundled into a zip archive—what we call an app package—that you’ll install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app.
+As you build more Copilot extensions, you’ll notice that the final output is a set of a few files bundled into a zip archive—what we call an app package—that you’ll install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a Declarative Agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app.
 
 | File Type                          | Description                                                                                                                                                     | Required |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
@@ -27,4 +27,4 @@ You can enhance the agent's focus on context and data by not only adding instruc
 
 
 
-☑️  Well done, you've built a solid foundation in the theory of declarative agents. Select **Next >** to go to the next chapter.
+☑️  Well done, you've built a solid foundation in the theory of Declarative Agents. Select **Next >** to go to the next chapter.

@@ -7,7 +7,7 @@
 
 If you like how TypeScript enforces structure in your frontend/backend code, you'll love how TypeSpec enforces structure in your agent and its API services like actions. It fits perfectly in design-first development workflows that align with tools like Visual Studio Code.
 
-- **Clear Communication** - It provides a single source of truth that defines how your agent should behave, avoiding confusion when dealing with multiple manifest files like in the case of declarative agents.
+- **Clear Communication** - It provides a single source of truth that defines how your agent should behave, avoiding confusion when dealing with multiple manifest files like in the case of Declarative Agents.
 
 - **Consistency** - It ensure all parts of your agent and its actions, capabilities etc are designed consistently following the same pattern.
 

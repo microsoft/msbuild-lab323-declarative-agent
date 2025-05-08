@@ -1,6 +1,6 @@
 # Exercise 1:  Build your first agent with TypeSpec using Microsoft 365 Agents Toolkit
 
-It’s time to build your first declarative agent using Microsoft 365 Agents Toolkit. 
+It’s time to build your first Declarative Agent using Microsoft 365 Agents Toolkit. 
 You will create an agent called **RepairServiceAgent**, which interacts with repairs data via an existing API service to help users manage car repair records.
 
 
@@ -25,7 +25,7 @@ You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and 
 
 ## Step 3: Define your agent 
 
-The declarative agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you’ll build your own agent that integrates with a car repair service, supporting multiple operations to manage repair data.
+The Declarative Agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you’ll build your own agent that integrates with a car repair service, supporting multiple operations to manage repair data.
 
 In the project folder, you will find two TypeSpec files **main.tsp** and **actions.tsp**.
 The agent is defined with its metadata, instructions and capabilities in the main.tsp file.
