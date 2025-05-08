@@ -1,8 +1,9 @@
 # Exercise 1:  Build your first agent using Microsoft 365 Agents Toolkit
 
-So far what you did was set up the environment to build agents. It’s time to build your first declarative agent using Microsoft 365 Agents Toolkit. 
+It’s time to build your first declarative agent using Microsoft 365 Agents Toolkit. 
 You will create an agent called **RepairServiceAgent**, which interacts with repairs data via an API service to help users manage car repair records.
 So, let’s get to it step by step.
+
 ## Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit
 -	Locate the Microsoft 365 Agents Toolkit icon from the VS Code menu on the left and select it. An activity bar will be open. 
 -	Select the “Create a New Agent/App” button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.
@@ -38,7 +39,7 @@ In the main.tsp file you will find the basic structure of the file. Review the c
 
 Let’s begin defining our agent for this scenario. Replace the @agent and @instructions definitions with below code snippet
 
-```
+```typespec
 @agent(
   "RepairServiceAgent",
    "An agent for managing repair information"
@@ -53,7 +54,7 @@ You will assist the user in finding car repair records based on the information 
 Next, we will add some conversation starters for our agent. Just below the instructions you will see a commented conversation starter definition. Uncomment it.
 And replace title and text as below.
 
-```
+```typespec
 // Uncomment this part to add a conversation starter to the agent.
 // This will be shown to the user when the agent is first created.
 @conversationStarter(#{
@@ -71,7 +72,7 @@ The placeholder code in actions.tsp is designed to search for open issues in a G
 
 After the general import and using statements, replace the code snippet with below  to define action metadata and server url. The namespace is also changed from  GitHubAPI to RepairsAPI
 
-```
+```typespec
 @service
 @server(RepairsAPI.SERVER_URL)
 @actions(RepairsAPI.ACTIONS_METADATA)
@@ -97,7 +98,7 @@ namespace RepairsAPI{
 Next, we will replace the only operation in the template code from searchIssues to a repair operation to get list of repairs.
 To do that replace the entire block of code after the SERVER_URL definition with below snippet. 
 
-```
+```typespec
   /**
    * List repairs from the API 
    * @param assignedTo The user assigned to a repair item.
@@ -112,7 +113,7 @@ To do that replace the entire block of code after the SERVER_URL definition with
 
 Now let’s go back to main.tsp file and add this action into the agent. After the conversation starters replace the entire block of code with below snippet.
 
-```
+```typespec
 namespace RepairServiceAgent{  
   // Uncomment this part to add actions to the agent.
   @service
@@ -129,7 +130,7 @@ namespace RepairServiceAgent{
 This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step, or if you wish to test the agent right away go to Step 5.
 
 A declarative agent application package typically consists of the following files
--	A M365 app manifest in JSON (the standard teams app manifest file called manifest.json)
+-	A Microsoft 365 app manifest in JSON (the standard teams app manifest file called manifest.json)
 -	A Declarative agent manifest in JSON which will consist of the agent’s name, instructions, capabilities, conversation starters and actions if needed.
 -	An optional plugin manifest in JSON to configure your action as an API plugin if they have authentication, required fields, adaptive card responses etc. This file is only needed if you have an action in your agent.
 -	An optional OpenAPI spec file in JSON or YAML for your API definitions. Again, only needed if you have an action in your agent
@@ -162,7 +163,7 @@ Next step is to test the Repair Service Agent.
 > 💡 **Note**  
 > Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
 
-- Next, go to https://m365.cloud.microsoft/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+- Next, go to [https://m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 - Select a conversation starter like “List repairs” and see check out the response.
 
 
