@@ -227,17 +227,20 @@ Let’s take the updated agent who is also now a repairs analyst to test.
   
 - You will get a confirmation dialog to confirm, proceed to confirm.
 
-![confirmation dialog](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/first-confirm-box.png)
+![first-confirm-box](https://github.com/user-attachments/assets/e2343240-143f-48ac-bd05-bae487105aea)
+
 
  The agent will add the item and send the response adaptive card back to you. 
 
- ![successfully created repair item](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/first-create-repair.png)
+![first-create-repair](https://github.com/user-attachments/assets/7fb66be4-5f94-4bab-9ef1-9498d03f42a9)
+
   
 - Next, send the prompt below to recheck if item is added. 
 
     +++*List all my repairs.*+++
 
- ![incomplete created repair item](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/incomplete-item.png)  
+![incomplete-item](https://github.com/user-attachments/assets/e58d3762-ee72-4fe7-b28e-21062bc67d59)
+
 
 You'll see that the newly created item has been sent, but it’s missing both a description and a date. Resolve this using the AI stack integrated with Copilot.
 
@@ -259,13 +262,15 @@ You'll see that the newly created item has been sent, but it’s missing both a 
 
 - The confirmation dialog if you notice has more metadata. Proceed to add the item by confirming the dialog.
 
-![confirm again](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/new-confirmation.png)  
+![new-confirmation](https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00)
+ 
 
  Again recheck if item is added with description and date.
 
     +++*List all my repairs.*+++
 
-![item added with added metadata](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/prefilled-item.png)  
+![prefilled-item](https://github.com/user-attachments/assets/e9564512-fa34-47ea-9130-9cbe1f2f92b5)
+
 
 You've successfully guided the agent to better recognize and address minor short comings from users.
 
@@ -275,6 +280,7 @@ You've successfully guided the agent to better recognize and address minor short
 
 You should get some response similar to below screen. It may vary sometimes. 
 
-![chart](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/final-chart.png)  
+![final-chart](https://github.com/user-attachments/assets/ea1a5b21-bc57-4ed8-a8a4-c187caff2c64)
+
 
 ☑️ You've successfully completed the second exercise! Select **Next >** to go to the next exercise.
