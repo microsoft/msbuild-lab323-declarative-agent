@@ -25,4 +25,4 @@ You can enhance the agent's focus on context and data by not only adding instruc
 - **People knowledge** - enables you to build an agent to answer questions about individuals in an organization.
 - **Dataverse knowledge** - enables you to add a Dataverse instance as a knowledge source and to add synonyms and a glossary to help the system better interpret customized data in your tables.
 
-☑️  Well done, you've built a solid foundation in the theory of declarative agents. Select **Next >** to g
+☑️  Well done, you've built a solid foundation in the theory of declarative agents. Select **Next >** to go to the next chapter.
