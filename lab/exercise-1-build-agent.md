@@ -72,7 +72,7 @@ The placeholder code in actions.tsp is designed to search for open issues in a G
 After the general import and using statements, replace the code snippet with below  to define action metadata and server url. The namespace is also changed from  GitHubAPI to RepairsAPI
 
 ```
-service
+@service
 @server(RepairsAPI.SERVER_URL)
 @actions(RepairsAPI.ACTIONS_METADATA)
 namespace RepairsAPI{
