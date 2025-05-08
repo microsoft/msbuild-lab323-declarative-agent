@@ -5,18 +5,20 @@ You will create an agent called **RepairServiceAgent**, which interacts with rep
 
 
 ## Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit
--	Locate the Microsoft 365 Agents Toolkit icon <img src="https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/m365atk-icon.png?raw=true" alt="m365 agents toolkit icon" width="24"/> from the VS Code menu on the left and select it. An activity bar will be open. 
+-	Locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. 
 -	Select the “Create a New Agent/App” button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.
 -	Choose “Declarative Agent” from the list of templates.
 -	Next, select “Start with TypeSpec for Microsoft 365 Copilot” to define your agent using TypeSpec.
 -	Next, select the folder where you want the agents toolkit to scaffold the agent project.
 -	Next, give an application name like - “RepairServiceAgent” and select Enter to complete the process. You will get a new VSCode window with the agent project preloaded.
 
+
+
 ## Step 2: Sign into the Microsoft 365 Agents Toolkit 
 
 You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and test your agent from within it.
 
--	Within the project window, select the Microsoft 365 Agents Toolkit icon <img src="https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/m365atk-icon.png?raw=true" alt="m365 agents toolkit icon" width="24"/> again from the left side menu. This will open the agent toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
+-	Within the project window, select the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> again from the left side menu. This will open the agent toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
 -	Under "Accounts" section select “Sign in to Microsoft 365”. This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or Cancel. Select “Sign in”. 
 -	In the virtual machine, the credentials to log into the Microsoft 365 tenant will be given in the same “Resources” panel where this instruction is, under title “Azure portal”. Use the username and password provided. Make sure you use the copy text instruction.
 -	Once signed in, close the browser and go back to the project window.
@@ -38,7 +40,8 @@ In the main.tsp file you will find the basic structure of the file. Review the c
 -	Basic instructions 2️⃣
 -	Placeholder code for actions and capabilities (commented out) 3️⃣
 
-![main.tsp default template](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/main-default.png)
+<img width="1260" alt="main-default" src="https://github.com/user-attachments/assets/2ce0f768-ff30-442b-94bf-19d537f5638b" />
+
 
 Begin by defining your agent for the repair scenario. Replace the "@agent" and "@instructions" definitions with below code snippet
 
@@ -162,7 +165,8 @@ Next step is to test the Repair Service Agent.
 > When prompted to connect the agent to process a query, you’ll usually see this screen just once.  
 > To streamline your experience in this lab, select **“Always allow”** when it appears.
 
-![exercise 1 demo](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/ex1-dem0-01.png)
+![ex1-dem0-01](https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7)
+
 
 ☑️ You've successfully completed the first exercise! Select **Next >** to go to the next exercise.
 
