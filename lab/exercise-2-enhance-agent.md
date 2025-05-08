@@ -4,7 +4,7 @@ Next, you will enhance the agent by adding more operations, enabling responses w
 
 ## Step 1: Modify agent to add more operations
 
-- Go to file actions.tsp and copy paste below snippet just after listRepairs operation to add these new operations createRepair, updateRepair and deleteRepair. Here you are also defining the Repair item data model.
+- Go to file `actions.tsp` and copy paste below snippet just after listRepairs operation to add these new operations createRepair, updateRepair and deleteRepair. Here you are also defining the Repair item data model.
 
 ```typespec
 /**
@@ -75,7 +75,7 @@ Next, you will enhance the agent by adding more operations, enabling responses w
 ```
 
 
-Next, go back to main.tsp file and make sure these new operations are also added into the agent's action.
+Next, go back to `main.tsp` file and make sure these new operations are also added into the agent's action.
 Paste the below snippet after the line *op listRepairs is global.RepairsAPI.listRepairs;* inside the "RepairServiceActions" namespace
 
 ```typespec
@@ -149,7 +149,7 @@ In the project folder, create a new folder called “cards” under the “appPa
 
 ```
 
-Next, go back to actions.tsp file and locate the listRepairs operation.
+Next, go back to `actions.tsp` file and locate the listRepairs operation.
 Just above the operation definition *@get  op listRepairs(@query assignedTo?: string): string;*, paste the card definition using below snippet.
 
 ```typespec
@@ -195,7 +195,7 @@ Next, you will enhance the agent by adding code interpreter capability to it. To
 ```
 
 Since the agent now supports additional functionality, update the instructions accordingly to reflect this enhancement.
-In the same main.tsp file, update instructions definition to have additional directives for the agent.
+In the same `main.tsp` file, update instructions definition to have additional directives for the agent.
 
 ```typespec
 @instructions("""

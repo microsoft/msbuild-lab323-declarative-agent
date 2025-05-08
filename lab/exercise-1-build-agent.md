@@ -27,15 +27,15 @@ You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and 
 
 The Declarative Agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you’ll build your own agent that integrates with a car repair service, supporting multiple operations to manage repair data.
 
-In the project folder, you will find two TypeSpec files **main.tsp** and **actions.tsp**.
-The agent is defined with its metadata, instructions and capabilities in the main.tsp file.
-Use the actions.tsp file to define your agent’s actions. If your agent includes any actions like connecting to an API service, then this is the file where it should be defined.
+In the project folder, you will find two TypeSpec files `main.tsp` and `actions.tsp`.
+The agent is defined with its metadata, instructions and capabilities in the `main.tsp` file.
+Use the `actions.tsp` file to define your agent’s actions. If your agent includes any actions like connecting to an API service, then this is the file where it should be defined.
 
-Open main.tsp and inspect what is there in the default template, which you will modify for our agent’s repair service scenario. 
+Open `main.tsp` and inspect what is there in the default template, which you will modify for our agent’s repair service scenario. 
 
 ### Update the Agent Metadata and Instructions
 
-In the main.tsp file you will find the basic structure of the file. Review the content provided by the agents toolkit template which includes:
+In the `main.tsp` file you will find the basic structure of the file. Review the content provided by the agents toolkit template which includes:
 -	Agent name and description 1️⃣
 -	Basic instructions 2️⃣
 -	Placeholder code for actions and capabilities (commented out) 3️⃣
@@ -74,9 +74,9 @@ And replace title and text as below.
 
 ### Update the action for the agent
 
-Next, define the action for your agent by opening the actions.tsp file. You’ll return to the main.tsp file later to complete the agent metadata with the action reference, but first, the action itself must be defined.
+Next, define the action for your agent by opening the actions.tsp file. You’ll return to the `main.tsp` file later to complete the agent metadata with the action reference, but first, the action itself must be defined.
 
-The placeholder code in actions.tsp is designed to search for open issues in a GitHub repository. It serves as a starting point to help newcomers understand how to define an action for their agent like action’s metadata, API host url and operations or functions and their definitions. You will replace all this with repair service. 
+The placeholder code in `actions.tsp` is designed to search for open issues in a GitHub repository. It serves as a starting point to help newcomers understand how to define an action for their agent like action’s metadata, API host url and operations or functions and their definitions. You will replace all this with repair service. 
 
 After the module-level directives like import and using statements, replace the existing code up to the point where the "SERVER_URL" is defined with the snippet below. This update introduces the action metadata and sets the server URL. Also, note that the namespace has been changed from GitHubAPI to RepairsAPI.
 
@@ -117,7 +117,7 @@ Replace the entire block of code starting just after the SERVER_URL definition a
 
 ````
 
-Now go back to main.tsp file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.
+Now go back to `main.tsp` file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.
 
 ```typespec
 namespace RepairServiceAgent{  
@@ -135,7 +135,7 @@ namespace RepairServiceAgent{
 ## Step 4: (Optional) Understand the decorators
 
 This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step, or if you wish to test the agent right away go to Step 5.
-In the TypeSpec files main.tsp and actions.tsp, you'll find decorators (starting with @), namespaces, models, and other definitions for your agent.
+In the TypeSpec files `main.tsp` and `actions.tsp`, you'll find decorators (starting with @), namespaces, models, and other definitions for your agent.
 
 Check this table to understand some of the decorators used in these files 
 
