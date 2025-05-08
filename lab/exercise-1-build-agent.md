@@ -20,298 +20,110 @@ You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and 
 -	In the virtual machine, the credentials to log into the Microsoft 365 tenant will be given in the same “Resources” panel where this instruction is, under title “Azure portal”. Use the username and password provided. Make sure you use the copy text instruction.
 -	Once signed it, close the browser and go back to the project window.
 
-## Step 3: Define your agent using TypeSpec
-Next, you will define the agent using the TypeSpec file called “main.tsp” in your project, the only file you will be modifying as you build your agent.
+## Step 3: Define your agent 
 
-### Setting up Agent metadata
+In the project folder, you will find the two TypeSpec files **main.tsp** and **actions.tsp**.
+The agent is defined with its metadata, instructions and capabilities in the main.tsp file.
+Use the actions.tsp file to define your agent’s actions. If your agent includes any actions, this is the file where they should be implemented.
+
+Let’s open main.tsp and inspect what is there in the default template, which we will modify for our agent’s scenario. 
+
+
+### Update the Agent Metadata and instructions
 
 In the main.tsp file you will find the basic structure of the file. Review the content provided by the template which includes:
 -	Agent name and description
 -	Basic instructions
--	Placeholder code (commented out)
+-	Placeholder code for actions and capabilities (commented out)
 
-Now let’s us start defining our agent. Replace the contents in the default file and paste below snippet to define the agent’s metadata
+Let’s begin defining our agent for this scenario. Replace the @agent and @instructions definitions with below code snippet
 
 ```
-import "@typespec/http";
-import "@typespec/openapi3";
-import "@microsoft/typespec-copilot-skills";
-
-using TypeSpec.Http;
-using TypespecCopilotSkills;
-using TypespecCopilotSkills.Agents;
-
 @agent(
   "RepairServiceAgent",
-  "An agent for managing repair information"
+   "An agent for managing repair information"
 )
 
 @instructions("""
-## Purpose
-
+  ## Purpose
 You will assist the user in finding car repair records based on the information provided by the user. 
-
 """)
+
+```
+Next, we will add some conversation starters for our agent. Just below the instructions you will see a commented conversation starter definition. Uncomment it.
+And replace title and text as below.
+
+```
+// Uncomment this part to add a conversation starter to the agent.
+// This will be shown to the user when the agent is first created.
 @conversationStarter(#{
   title: "List repairs",
   text: "List all repairs"
 })
-@conversationStarter(#{
-  title: "Create repair",
-  text: "Create a new repair titled [TO_REPLACE] and assign it to me"
-})
-```
-
-As you can see, you have defined name, description, system prompt/instructions and conversation starters. In a simple instruction based agent, this is all you need to provide.
-
-### Set up the Repair Service Logic for the agent
-
-In our case, we need to also add our Repair Service logic than just instructions. To do that let us now paste below code snippet to define operations and data model of your service for your agent.
-
-For that we will add a *RepairServiceAgent* namespace, which will have the full service definition including:
-- @service and @skill metadata
-- @server information (name and host url for the API)
-- Operations and their definitions under namespace *RepairsHub*
-  - listRepairs
-  - createRepair
-  - updateRepair
-  - deleteRepair
-- Repair model
-- OrchestratorState enum
-
 
 ```
-namespace RepairServiceAgent {
 
-  @service
-  @skill(#{
+### Update the action for the agent
+
+Next, define the action for your agent by opening the actions.tsp file. You’ll return to the main.tsp file later to complete the agent metadata with the action reference, but first, the action itself must be defined.
+
+The placeholder code in actions.tsp is designed to search for open issues in a GitHub repository. It serves as a starting point to help newcomers understand how to define an action for their agent like action’s metadata, API host url and operations or functions and their definitions. 
+
+After the general import and using statements, replace the code snippet with below  to define action metadata and server url. The namespace is also changed from  GitHubAPI to RepairsAPI
+
+```
+service
+@server(RepairsAPI.SERVER_URL)
+@actions(RepairsAPI.ACTIONS_METADATA)
+namespace RepairsAPI{
+  /**
+   * Metadata for the API actions.
+   */
+  const ACTIONS_METADATA = #{
     nameForHuman: "Repair Service Agent",
     descriptionForHuman: "Manage your repairs and maintenance tasks.",
     descriptionForModel: "Plugin to add, update, remove, and view repair objects.",
-  })
-  @server("https://repairshub.azurewebsites.net", "Repairs Hub API")
-  namespace RepairsHub {
-    /**
-     * List all repairs.
-     * @param assignedTo Optional filter to list repairs assigned to a specific user.
-     */
-    @state(orchestratorState.responding, 
-      #{
-        instructions: """    
-            When listing more than one repairs, display them in a neat table. For single item display in rich cards.  
-        """
-      })
-    @route("/repairs")
-    @get
-    @capabilities(#{
-      responseSemantics: #{
-        dataPath: "$",
-        properties: #{
-          title: "$.title",
-          subTitle: "$.description",
-          url: "$.image",
-          thumbnailUrl: "$.image"
-        },
-        staticTemplate: #{
-          $schema: "http://adaptivecards.io/schemas/adaptive-card.json",
-          type: "AdaptiveCard",
-          version: "1.4",
-        body: #[
-          #{
-            type: "Container",
-            $data: "\${\$root}",
-            items: #[
-           #{ 
-          type: "ColumnSet",       
-          columns: #[ 
-            #{ 
-              type: "Column",
-              width: "auto",
-              items: #[ 
-                #{ 
-                  type: "Image",
-                  url: "\${image}",
-                  $when: "\${image != null}", 
-                  size: "Medium",
-                  style: "default"
-                } 
-              ] 
-            },
-            #{ 
-              type: "Column",
-              width: "stretch",
-              items: #[ 
-                #{ 
-                  type: "TextBlock",
-                  text: "\${if(title, title, 'N/A')}",
-                  weight: "Bolder",
-                  size: "Large",
-                  wrap: true
-                },
-                #{ 
-                  type: "TextBlock",
-                  text: "Assigned to: \${if(assignedTo, assignedTo, 'N/A')}",
-                  spacing: "Small",
-                  isSubtle: true,
-                  wrap: true
-                },
-                #{ 
-                  type: "TextBlock",
-                  text: "Due Date: \${if(date, date, 'N/A')}",
-                  spacing: "Small",
-                  isSubtle: true,
-                  wrap: true
-                } 
-            ] 
-          } 
-    ] 
-  },  #{ 
-    type: "TextBlock",
-    text: "\${if(description, description, 'N/A')}",
-    wrap: true,
-    spacing: "Medium"
-  } ]
+    legalInfoUrl: "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    privacyPolicyUrl: "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+  };
+  
+  /**
+   * The base URL for the  API.
+   */
+  const SERVER_URL = "https://repairshub.azurewebsites.net";
 
-}],
-actions: #[
-            #{
-              type: "Action.OpenUrl",
-              title: "View Repair",
-              url: "https://www.bing.com/search?q=\${image}",
-            }
-          ]
-        },
-      }
-    })
-    op listRepairs(@query assignedTo?: string): string;
+```
 
-    /**
-     * Create a new repair. 
-     * When creating a repair, the `id` field is optional and will be generated by the server.
-     * The `date` field should be in ISO 8601 format (e.g., "2023-10-01T12:00:00Z").
-     * The `image` field should be a valid URL pointing to the image associated with the repair.
-     * @param repair The repair to create.
-     */
-    @route("/repairs")
-    @capabilities(#{
-      confirmation: #{
-        type: "AdaptiveCard",
-        title: "Create a new repair",
-        body: """   
-        Creating a new repair with the following details:       
-          * **Title**: {{ function.parameters.title }}
-          * **Description**: {{ function.parameters.description }}
-          * **Assigned To**: {{ function.parameters.assignedTo }}
-        """
-      }
-    })
-    @post
-    op createRepair(@body repair: Repair): Repair;
+Next, we will replace the only operation in the template code from searchIssues to a repair operation to get list of repairs.
+To do that replace the entire block of code after the SERVER_URL definition with below snippet. 
 
-    /**
-     * Update an existing repair.
-     * The `id` field is required to identify the repair to update.
-     * The `date` field should be in ISO 8601 format (e.g., "2023-10-01T12:00:00Z").
-     * The `image` field should be a valid URL pointing to the image associated with the repair.
-     * @param repair The repair to update.
-     */
-    @route("/repairs")
-    @state(orchestratorState.reasoning, 
-      #{
-        instructions: """
-          **ALWAYS** use the listRepairs function to get the ID first.
-        """
-      })
-    @capabilities(#{
-      confirmation: #{
-        type: "AdaptiveCard",
-        title: "Create a new repair",
-        body: """   
-        Updating a repair with the following details:       
-          * **ID**: {{ function.parameters.id }}      
-          * **Title**: {{ function.parameters.title }}
-          * **Description**: {{ function.parameters.description }}
-          * **Assigned To**: {{ function.parameters.assignedTo }}
-          * 
-        """
-      }
-    })
-    @patch
-    op updateRepair(@body repair: Repair): Repair;
+```
+  /**
+   * List repairs from the API 
+   * @param assignedTo The user assigned to a repair item.
+   */
 
-    /**
-     * Delete a repair.
-     * The `id` field is required to identify the repair to delete.
-     * @param repair The repair to delete.
-     */
-    @route("/repairs")
-    @state(orchestratorState.reasoning, 
-      #{
-        instructions: """
-          **ALWAYS** use the listRepairs function to get the ID first.
-        """
-      })
-    @capabilities(#{
-      confirmation: #{
-        type: "AdaptiveCard",
-        title: "Delete a repair",
-        body: """   
-        Deleting a repair with the following details:       
-          * **ID**: {{ function.parameters.id }}
-        """
-      }
-    })
-    @delete
-    op deleteRepair(@body repair: Repair): Repair;
-    
-    /**
-     * A model representing a repair.
-     */
-    model Repair {
-      /**
-       * The unique identifier for the repair.
-       */
-      id?: string;
+  @route("/repairs")
+  @get  op listRepairs(@query assignedTo?: string): string;
+ }
 
-      /**
-       * The short summary or title of the repair.
-       */
-      title: string;
 
-      /**
-       * The detailed description of the repair.
-       */
-      description?: string;
+````
 
-      /**
-       * The user who is assigned to the repair.
-       */
-      assignedTo?: string;
+Now let’s go back to main.tsp file and add this action into the agent. After the conversation starters replace the entire block of code with below snippet.
 
-      /**
-       * The optional date and time when the repair is scheduled or completed.
-       */
-      @format("date-time")
-      date?: string;
-
-      /**
-       * The URL of the image associated with the repair.
-       */
-      @format("uri")
-      image?: string;
-    }
-
-    enum orchestratorState {
-      reasoning,
-      responding
-    }
+```
+namespace RepairServiceAgent{  
+  // Uncomment this part to add actions to the agent.
+  @service
+  @server(global.RepairsAPI.SERVER_URL)
+  @actions(global.RepairsAPI.ACTIONS_METADATA)
+  namespace RepairServiceActions {
+    op listRepairs is global.RepairsAPI.listRepairs;   
   }
 }
 ```
 
-
-
-Your agent should now be fully defined with metadata, instructions, and operational logic.
 
 ## Step 4: (Optional) Understand the code
 This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step, or if you wish to test the agent right away go to Step 5.
@@ -324,9 +136,10 @@ A declarative agent application package typically consists of the following file
 
 Clearly that is a lot of file that developers need to maintain. To simplify this, we use a single TypeSpec file that generates all necessary manifests from one definition. TypeSpec helps define data and services, reducing errors in API development and consumption. 
 
-Let's understand the TypeSpec file. Open main.tsp from the project's root. In this file, you'll find decorators (starting with @), namespaces, models, enums, and other definitions for your agent.
+In the TypeSpec files main.tsp and actions.tsp, you'll find decorators (starting with @), namespaces, models, enums, and other definitions for your agent.
 
-Check this table to understand the decorators used in main.tsp file. 
+Check this table to understand some of the decorators used in these files 
+
 
 
 | Annotation             | Description                                                                                                                                                     |
@@ -335,9 +148,8 @@ Check this table to understand the decorators used in main.tsp file.
 | `@instructions`       | Defines the instructions that prescribe the behaviour of the agent. 8000 characters or less                                                                     |
 | `@conversationStarter`| Defines conversation starters for the agent                                                                                                                     |
 | `@op`                 | Defines any operation. Either it can be an operation to define agent’s capabilities like `op GraphicArt`, `op CodeInterpreter` etc., or define API operations like `op listRepairs`. For a post operation, define it like: `op createRepair(@body repair: Repair): Repair;                                                                                                                 |
-| `@skill`              | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
+| `@actions`              | Defines the name and descriptions for human and model to be used in various manifest files                                                                      |
 | `@server`             | Defines the server endpoint of the API and its name                                                                                                              |
-| `@state`              | Defines reasoning and responding states of the orchestrator of any function                                                                                     |
 | `@capabilities`       | When used inside a function, it defines simple adaptive cards with small definitions like a confirmation card for the operation                                  |
 
 ## Step 5: Test your agent
