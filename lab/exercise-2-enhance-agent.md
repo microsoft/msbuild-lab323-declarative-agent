@@ -1,10 +1,10 @@
 # Exercise 2:  Enhance Agent capabilities
 
-Next, we’ll enhance this agent by adding more operations, enabling responses with Adaptive Cards, and incorporating code interpreter capabilities. Let’s explore each of these enhancements step by step.
+Next, you will enhance the agent by adding more operations, enabling responses with Adaptive Cards, and incorporating code interpreter capabilities. Let’s explore each of these enhancements step by step.
 
 ## Step 1: Modify agent to add more operations
 
-- Go to file actions.tsp and copy paste below snippet just after listRepairs operation to add the new operations.
+- Go to file actions.tsp and copy paste below snippet just after listRepairs operation to add these new operations createRepair, updateRepair and deleteRepair. Here you are also defining the Repair item data model.
 
 ```typespec
 /**
@@ -73,10 +73,10 @@ Next, we’ll enhance this agent by adding more operations, enabling responses w
   }
 
 ```
-We have defined the new operations as well as the data model for a repair item. 
 
-Let’s go back to main.tsp file and make sure these new operations are also added into the agent's action.
-Paste the below snippet after *op listRepairs is global.RepairsAPI.listRepairs;* inside the "RepairServiceActions" namespace
+
+Next, go back to main.tsp file and make sure these new operations are also added into the agent's action.
+Paste the below snippet after the line *op listRepairs is global.RepairsAPI.listRepairs;* inside the "RepairServiceActions" namespace
 
 ```typespec
 op createRepair is global.RepairsAPI.createRepair;
@@ -84,7 +84,7 @@ op updateRepair is global.RepairsAPI.updateRepair;
 op deleteRepair is global.RepairsAPI.deleteRepair;   
 
 ```
-Let’s also add a new conversation starter for creating a new repair item
+Let’s also add a new conversation starter for creating a new repair item just after the first conversation start definintion.
 
 ```typespec
 @conversationStarter(#{
@@ -95,10 +95,10 @@ Let’s also add a new conversation starter for creating a new repair item
 ```
 ## Step 2: Add adaptive card to function reference
 
-Next, we’ll show you how to enhance the reference or response cards using adaptive cards. Let’s take the listRepairs operation and add an adaptive card for the repair item. 
-In the project folder, create a new folder called “cards” under the “appPackage” folder. Create a file repair.json and paste the code snippet as is from below to the file. 
+Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the listRepairs operation and add an adaptive card for the repair item. 
+In the project folder, create a new folder called “cards” under the “appPackage” folder. Create a file repair.json in the cards folder and paste the code snippet as is from below to the file. 
 
-```typespec
+```json
 {
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
@@ -157,6 +157,7 @@ Just above the operation definition *@get  op listRepairs(@query assignedTo?: st
 ```
 
 The card response is sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
+Continue to add one for adaptive card.
 Add a response card for the createRepair operation to show what the agent created. Copy paste below snippet just above the operation for create repair.
 
 ```typespec
@@ -186,14 +187,14 @@ Add a response card for the createRepair operation to show what the agent create
 
 ## Step 3:   Add code interpreter capabilities
 
-Next, enhance the agent by adding code interpreter capabilities. To do this, open the main.tsp file and locate the RepairServiceAgent namespace. Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
+Declarative agents can be extended to have many capabilities like OneDriveAndSharePoint, WebSearch, CodeInterpreter etc
+Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the main.tsp file and locate the "RepairServiceAgent" namespace. Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
 
 ```typespec
   op codeInterpreter is AgentCapabilities.CodeInterpreter;
 ```
-There are many other capabilities as well that can be added like OneDriveAndSharePoint, WebSearch etc. but for now let’s jus add CodeInterpreter.
 
-Since the agent now supports report generation, update the instructions accordingly to reflect this new capability.
+Since the agent now supports additional functionality, update the instructions accordingly to reflect this enhancement.
 In the same main.tsp file, update instructions definition to have additional directives for the agent.
 
 ```typespec
@@ -216,23 +217,23 @@ You will assist the user in finding car repair records based on the information 
 
 Let’s take the updated agent who is also now a repairs analyst to test. 
 
-- Select the Agent Toolkit extension to open its activity bar from within your project.
+- Select the agents toolkit's extension icon to open its activity bar from within your project.
 - In the activity bar of the toolkit under “LifeCycle” select “Provision” to package and upload the newly updated agent for testing. 
-- Next, go to https://office.com/chat to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+- Next, go to [https://office.com/chat](https://office.com/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 
-- Start by using the conversation starter 'Create repair'. Add a title to the prompt, then send it to the chat to initiate the interaction. 
+- Start by using the conversation starter 'Create repair'. Replace parts of the prompt to add a title , then send it to the chat to initiate the interaction. For e.g.
 
- +++*Create a new repair titled "New brake issue" and assign it to me.*+++ 
+    +++*Create a new repair titled "New brake issue" and assign it to me.*+++ 
   
-- You will get a confirmation dialog, proceed to confirm. The agent will add the item and send the response adaptive card back to you. 
+- You will get a confirmation dialog to confirm, proceed to confirm. The agent will add the item and send the response adaptive card back to you. 
   
 - Next, send the prompt below to recheck if item is added. 
 
- +++*List all my repairs.*+++
+    +++*List all my repairs.*+++
 
-You'll notice that the newly created item lacks both a description and a date. Let’s address this using the AI stack integrated with Copilot.
+You'll see that the newly created item has been sent, but it’s missing both a description and a date. Resolve this using the AI stack integrated with Copilot.
 
-Insert the following code above the createRepair operation to apply a special instruction: set today’s date as the default value and use the title as the default description for this operation only. 
+- Insert the following code above the *createRepair* operation to apply a special instruction: set today’s date as the default value and use the title as the default description for this operation only. 
 
 
 ```typespec
@@ -243,15 +244,16 @@ Insert the following code above the createRepair operation to apply a special in
         """
       })
 ```
-Let's create another item. 
 
- +++*Create a new repair titled "rear camera issue" and assign it to me.*+++ 
+- To test this new update, create another item. 
 
- Proceed to add the item by confirming the dialog. Again recheck if item is added with description and date.
+    +++*Create a new repair titled "rear camera issue" and assign it to me.*+++ 
 
-  +++*List all my repairs.*+++
+- Proceed to add the item by confirming the dialog. Again recheck if item is added with description and date.
+
+    +++*List all my repairs.*+++
 
 
 - Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
 
- +++*Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*+++
+    +++*Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*+++

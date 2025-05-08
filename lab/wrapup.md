@@ -5,7 +5,7 @@ Congratulations! You've completed the lab and built your first declarative agent
 # Next Steps
 
 Customise your agent's personality and instructions.
-Try different capabilities in your agent
+Try different capabilities in your agent.
 
 # Resources
 
