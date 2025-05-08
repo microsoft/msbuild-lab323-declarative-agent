@@ -21,7 +21,8 @@ You can enable developer mode in a chat to allow you as a developer to understan
     -	Actions and what function were selected 3️⃣
     -	Executed action info with detailed information about the request, latency, response data etc. 4️⃣
 
-![agent debug info](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-3/agent-info.png)  
+![agent-info](https://github.com/user-attachments/assets/b135f3b0-50f1-47a1-b608-a5a1b27b806e)
+
 
 ## Step 2: Agent debugging in Agents Toolkit
 
