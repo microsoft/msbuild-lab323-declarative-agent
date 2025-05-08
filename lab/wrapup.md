@@ -1,6 +1,6 @@
 # Wrap Up
 
-Congratulations! You've completed the lab and built your first declarative agent in TypeSpec with the Microsoft 365 Agents Toolkit. 
+🏁 Congratulations! You've completed the lab and built your first declarative agent in TypeSpec with the Microsoft 365 Agents Toolkit. 
 
 # Next Steps
 

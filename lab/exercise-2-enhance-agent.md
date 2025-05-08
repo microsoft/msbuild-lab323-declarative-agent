@@ -225,11 +225,19 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 
     +++*Create a new repair titled "New brake issue" and assign it to me.*+++ 
   
-- You will get a confirmation dialog to confirm, proceed to confirm. The agent will add the item and send the response adaptive card back to you. 
+- You will get a confirmation dialog to confirm, proceed to confirm.
+
+![confirmation dialog](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/first-confirm-box.png)
+
+ The agent will add the item and send the response adaptive card back to you. 
+
+ ![successfully created repair item](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/first-create-repair.png)
   
 - Next, send the prompt below to recheck if item is added. 
 
     +++*List all my repairs.*+++
+
+ ![incomplete created repair item](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/incomplete-item.png)  
 
 You'll see that the newly created item has been sent, but it’s missing both a description and a date. Resolve this using the AI stack integrated with Copilot.
 
@@ -249,11 +257,24 @@ You'll see that the newly created item has been sent, but it’s missing both a 
 
     +++*Create a new repair titled "rear camera issue" and assign it to me.*+++ 
 
-- Proceed to add the item by confirming the dialog. Again recheck if item is added with description and date.
+- The confirmation dialog if you notice has more metadata. Proceed to add the item by confirming the dialog.
+
+![confirm again](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/new-confirmation.png)  
+
+ Again recheck if item is added with description and date.
 
     +++*List all my repairs.*+++
 
+![item added with added metadata](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/prefilled-item.png)  
+
+You've successfully guided the agent to better recognize and address minor short comings from users.
 
 - Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
 
     +++*Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.*+++
+
+You should get some response similar to below screen. It may vary sometimes. 
+
+![chart](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-2/final-chart.png)  
+
+☑️ You've successfully completed the second exercise! Select **Next >** to go to the next exercise.
