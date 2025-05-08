@@ -23,7 +23,7 @@ You can enable developer mode in a chat to allow you as a developer to understan
 
 ## Step 2: Agent debugging in Agents Toolkit
 
-If you want to see debugger information on your code editor where you are working, that is also possible now using the M365 Agents Toolkit. 
+If you want to see debugger information on your code editor where you are working, that is also possible now using the Microsoft 365 Agents Toolkit. 
 
 - Go back to your project in VS Code.
 - Select the debug icon from the VS Code menu on the left side of the editor. 
