@@ -1,4 +1,6 @@
-# What is TypeSpec? 
+# Significance of TypeSpec for Declarative Agents
+
+## What is TypeSpec
 
 **TypeSpec** is a language developed by Microsoft for designing and describing API contracts in a structured and type-safe way. Think of it like a blueprint for how an API should look and behave including what data it accepts, returns, and how different parts of the API and its actions are connected.
 
