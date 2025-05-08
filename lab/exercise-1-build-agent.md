@@ -128,7 +128,6 @@ namespace RepairServiceAgent{
 ## Step 4: (Optional) Understand the decorators
 
 This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step, or if you wish to test the agent right away go to Step 5.
-
 In the TypeSpec files main.tsp and actions.tsp, you'll find decorators (starting with @), namespaces, models, and other definitions for your agent.
 
 Check this table to understand some of the decorators used in these files 
@@ -147,11 +146,11 @@ Check this table to understand some of the decorators used in these files
 
 Next step is to test the Repair Service Agent. 
 
-- Select the Agent Toolkit extension, to open the activity bar from within your project.
-- In the activity bar of the toolkit under “LifeCycle” select “Provision”. This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
+- Select the agents toolkit extension icon, to open the activity bar from within your project.
+- In the activity bar of the agents toolkit under “LifeCycle” select “Provision”. This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
 
 > 💡 **Note**  
-> Here the toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
+> Here the agents toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
 
 - Next, go to [https://m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 - Select a conversation starter like “List repairs” and see check out the response.

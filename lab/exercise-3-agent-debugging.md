@@ -6,9 +6,9 @@ You can enable developer mode in a chat to allow you as a developer to understan
 
 - Copy and paste the following line into the chat with your agent to enable debugging mode.
 
-```
--developer on
-```
+    ```
+    -developer on
+    ```
 - Next to test, send a prompt to interact with the agent like the one below.
 
    +++*Find out what Karin is working on.*+++
