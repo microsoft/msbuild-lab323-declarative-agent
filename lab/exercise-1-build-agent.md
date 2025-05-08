@@ -23,19 +23,22 @@ You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and 
 
 ## Step 3: Define your agent 
 
+The declarative agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you’ll build your own agent that integrates with a car repair service, supporting multiple operations to manage repair data.
+
 In the project folder, you will find two TypeSpec files **main.tsp** and **actions.tsp**.
 The agent is defined with its metadata, instructions and capabilities in the main.tsp file.
 Use the actions.tsp file to define your agent’s actions. If your agent includes any actions like connecting to an API service, then this is the file where it should be defined.
 
 Open main.tsp and inspect what is there in the default template, which you will modify for our agent’s repair service scenario. 
 
-
 ### Update the Agent Metadata and Instructions
 
 In the main.tsp file you will find the basic structure of the file. Review the content provided by the agents toolkit template which includes:
--	Agent name and description
--	Basic instructions
--	Placeholder code for actions and capabilities (commented out)
+-	Agent name and description 1️⃣
+-	Basic instructions 2️⃣
+-	Placeholder code for actions and capabilities (commented out) 3️⃣
+
+![main.tsp default template](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/main-default.png)
 
 Begin by defining your agent for the repair scenario. Replace the "@agent" and "@instructions" definitions with below code snippet
 
@@ -155,10 +158,15 @@ Next step is to test the Repair Service Agent.
 - Next, go to [https://m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 - Select a conversation starter like “List repairs” and see check out the response.
 
-
 > 💡 **Tip**  
 > When prompted to connect the agent to process a query, you’ll usually see this screen just once.  
 > To streamline your experience in this lab, select **“Always allow”** when it appears.
+
+![exercise 1 demo](https://github.com/microsoft/msbuild-lab323-declarative-agent/blob/main/lab/images/exercise-1/ex1-dem0-01.png)
+
+☑️ You've successfully completed the first exercise! Select **Next >** to go to the next exercise.
+
+
 
 
 
