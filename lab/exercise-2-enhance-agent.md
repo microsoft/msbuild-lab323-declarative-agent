@@ -75,8 +75,7 @@ Next, you will enhance the agent by adding more operations, enabling responses w
 ```
 
 
-Next, go back to `main.tsp` file and make sure these new operations are also added into the agent's action.
-Paste the below snippet after the line `op listRepairs is global.RepairsAPI.listRepairs;` inside the `RepairServiceActions` namespace
+- Next, go back to `main.tsp` file and make sure these new operations are also added into the agent's action. Paste the below snippet after the line `op listRepairs is global.RepairsAPI.listRepairs;` inside the `RepairServiceActions` namespace
 
 ```typespec
 op createRepair is global.RepairsAPI.createRepair;
@@ -84,7 +83,7 @@ op updateRepair is global.RepairsAPI.updateRepair;
 op deleteRepair is global.RepairsAPI.deleteRepair;   
 
 ```
-Let’s also add a new conversation starter for creating a new repair item just after the first conversation start definintion.
+- Also add a new conversation starter for creating a new repair item just after the first conversation start definintion.
 
 ```typespec
 @conversationStarter(#{
@@ -96,7 +95,8 @@ Let’s also add a new conversation starter for creating a new repair item just 
 ## Step 2: Add adaptive card to function reference
 
 Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the listRepairs operation and add an adaptive card for the repair item. 
-In the project folder, create a new folder called "cards" under the "appPackage" folder. Create a file `repair.json` in the cards folder and paste the code snippet as is from below to the file. 
+
+- In the project folder, create a new folder called "cards" under the "appPackage" folder. Create a file `repair.json` in the cards folder and paste the code snippet as is from below to the file. 
 
 ```json
 {
@@ -149,31 +149,38 @@ In the project folder, create a new folder called "cards" under the "appPackage"
 
 ```
 
-Next, go back to `actions.tsp` file and locate the listRepairs operation.
-Just above the operation definition `@get  op listRepairs(@query assignedTo?: string): string;`, paste the card definition using below snippet.
+- Next, go back to `actions.tsp` file and locate the listRepairs operation. Just above the operation definition `@get  op listRepairs(@query assignedTo?: string): string;`, paste the card definition using below snippet.
 
 ```typespec
+
   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
-```
+  
+  ```
 
-The card response is sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
-Continue to the card for the createRepair operation to show what the agent created. Copy paste below snippet just above the operation ` @post  op createRepair(@body repair: Repair): Repair;`
+The above card response will be sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
+Continue to add card response for the `createRepair` operation to show what the agent created after the POST operation. 
+
+- Copy paste below snippet just above the code `@post  op createRepair(@body repair: Repair): Repair;`
 
 ```typespec
+
    @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
+
 ```
 
 ## Step 3:   Add code interpreter capabilities
 
 Declarative Agents can be extended to have many capabilities like OneDriveAndSharePoint, WebSearch, CodeInterpreter etc
-Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the `main.tsp` file and locate the `RepairServiceAgent` namespace. Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
+Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the `main.tsp` file and locate the `RepairServiceAgent` namespace. 
+- Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
 
 ```typespec
   op codeInterpreter is AgentCapabilities.CodeInterpreter;
 ```
 
 Since the agent now supports additional functionality, update the instructions accordingly to reflect this enhancement.
-In the same `main.tsp` file, update instructions definition to have additional directives for the agent.
+
+- In the same `main.tsp` file, update instructions definition to have additional directives for the agent.
 
 ```typespec
 @instructions("""
