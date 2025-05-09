@@ -157,32 +157,10 @@ Just above the operation definition `@get  op listRepairs(@query assignedTo?: st
 ```
 
 The card response is sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
-Continue to add one for adaptive card.
-Add a response card for the createRepair operation to show what the agent created. Copy paste below snippet just above the operation for create repair.
+Continue to the card for the createRepair operation to show what the agent created. Copy paste below snippet just above the operation ` @post  op createRepair(@body repair: Repair): Repair;`
 
 ```typespec
-  @capabilities(#{
-    responseSemantics: #{
-      dataPath: "$",
-      properties: #{
-        title: "$.title",
-        subTitle: "$.description"      
-      },
-      staticTemplate: #{
-        $schema: "http://adaptivecards.io/schemas/adaptive-card.json",
-        type: "AdaptiveCard",
-        version: "1.5",
-      body: #[
-        #{
-        type: "TextBlock",
-      text: "🎉 \${if(title, title, 'N/A')} successfully added and assigned to \${if(assignedTo, assignedTo, 'N/A')} ", 
-      wrap: true,
-      weight: "Bolder",     
-      size: "Large"
-        }      
-      ] } }
-     })
-
+   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
 ```
 
 ## Step 3:   Add code interpreter capabilities
@@ -227,16 +205,20 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 
     `Create a new repair titled "rear camera issue" and assign it to me.`
 
-- The confirmation dialog if you notice has more metadata that what you sent, thanks to the new instructions. Proceed to add the item by confirming the dialog.
+- The confirmation dialog if you notice has more metadata that what you sent, thanks to the new instructions. 
 
 ![new-confirmation](https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00)
  
+ - Proceed to add the item by confirming the dialog.
 
- Recheck if the item added.
+ The agent responds is with created item shown in a rich adaptive card.
+
+ - Next, recheck reference cards work. Send below prompt in the conversation
 
   `List all my repairs.`
 
-![prefilled-item](https://github.com/user-attachments/assets/e9564512-fa34-47ea-9130-9cbe1f2f92b5)
+The agent with the list with each referenced with an adaptive card.
+
 
 - Next, you will test the new analytical capability of your agent.
 - Open a new chat by selecting the **New chat** button on the top right corner of your agent.
