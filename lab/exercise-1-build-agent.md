@@ -74,7 +74,8 @@ And replace title and text as below.
 
 ### Update the action for the agent
 
-Next, define the action for your agent by opening the actions.tsp file. You’ll return to the `main.tsp` file later to complete the agent metadata with the action reference, but first, the action itself must be defined.
+Next, you will define the action for your agent by opening the actions.tsp file. You’ll return to the `main.tsp` file later to complete the agent metadata with the action reference, but first, the action itself must be defined. For that open the file `actions.tsp`.
+
 
 The placeholder code in `actions.tsp` is designed to search for open issues in a GitHub repository. It serves as a starting point to help newcomers understand how to define an action for their agent like action’s metadata, API host url and operations or functions and their definitions. You will replace all this with repair service. 
 
@@ -156,17 +157,27 @@ Next step is to test the Repair Service Agent.
 - Select the agents toolkit extension icon, to open the activity bar from within your project.
 - In the activity bar of the agents toolkit under "LifeCycle" select "Provision". This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. 
 
-> 💡 **Note**  
+> [!knowledge] 
 > Here the agents toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.
 
-- Next, go to +++https://m365.cloud.microsoft/chat+++ in the browser to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
-- Select a conversation starter like "List repairs" and send the prompt to the chat conversation and see check out the response.
+- Next, open Microsoft Edge from lab machine from the taskbar and go to +++https://m365.cloud.microsoft/chat+++ in the browser to open Copilot app. Use the same credentils you used from the `Resources` tab in this instruction.
 
-> 💡 **Tip**  
+> [!help] 
+> If for any reason you see a "Something went wrong" screen in Copilot app, just refresh the browser.  
+
+
+- Select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+This will take a while and you will be able to see a toaster message showing the progress of the task to provision.
+
+- Select the conversation starter - `List repairs` and send the prompt to the chat to initiate conversation with your agent and see check out the response.
+
+> [!help] 
 > When prompted to connect the agent to process a query, you’ll usually see this screen just once.  
 > To streamline your experience in this lab, select **"Always allow"** when it appears.
 
 ![ex1-dem0-01](https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7)
+
+- Keep this browser session open for upcoming exercise. 
 
 
 ☑️ You've successfully completed the first exercise! Select **Next >** to go to the next exercise.

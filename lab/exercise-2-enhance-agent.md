@@ -1,10 +1,10 @@
 # Exercise 2:  Enhance Agent capabilities
 
-Next, you will enhance the agent by adding more operations, enabling responses with Adaptive Cards, and incorporating code interpreter capabilities. Let’s explore each of these enhancements step by step.
+Next, you will enhance the agent by adding more operations, enabling responses with Adaptive Cards, and incorporating code interpreter capabilities. Let’s explore each of these enhancements step by step. Go back to the project in VS Code.
 
 ## Step 1: Modify agent to add more operations
 
-- Go to file `actions.tsp` and copy paste below snippet just after listRepairs operation to add these new operations createRepair, updateRepair and deleteRepair. Here you are also defining the Repair item data model.
+- Go to file `actions.tsp` and copy paste below snippet just after `listRepairs` operation to add these new operations createRepair, updateRepair and deleteRepair. Here you are also defining the Repair item data model.
 
 ```typespec
 /**
@@ -76,7 +76,7 @@ Next, you will enhance the agent by adding more operations, enabling responses w
 
 
 Next, go back to `main.tsp` file and make sure these new operations are also added into the agent's action.
-Paste the below snippet after the line *op listRepairs is global.RepairsAPI.listRepairs;* inside the "RepairServiceActions" namespace
+Paste the below snippet after the line `op listRepairs is global.RepairsAPI.listRepairs;` inside the `RepairServiceActions` namespace
 
 ```typespec
 op createRepair is global.RepairsAPI.createRepair;
@@ -96,7 +96,7 @@ Let’s also add a new conversation starter for creating a new repair item just 
 ## Step 2: Add adaptive card to function reference
 
 Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the listRepairs operation and add an adaptive card for the repair item. 
-In the project folder, create a new folder called "cards" under the "appPackage" folder. Create a file repair.json in the cards folder and paste the code snippet as is from below to the file. 
+In the project folder, create a new folder called "cards" under the "appPackage" folder. Create a file `repair.json` in the cards folder and paste the code snippet as is from below to the file. 
 
 ```json
 {
@@ -150,7 +150,7 @@ In the project folder, create a new folder called "cards" under the "appPackage"
 ```
 
 Next, go back to `actions.tsp` file and locate the listRepairs operation.
-Just above the operation definition *@get  op listRepairs(@query assignedTo?: string): string;*, paste the card definition using below snippet.
+Just above the operation definition `@get  op listRepairs(@query assignedTo?: string): string;`, paste the card definition using below snippet.
 
 ```typespec
   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
@@ -188,7 +188,7 @@ Add a response card for the createRepair operation to show what the agent create
 ## Step 3:   Add code interpreter capabilities
 
 Declarative Agents can be extended to have many capabilities like OneDriveAndSharePoint, WebSearch, CodeInterpreter etc
-Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the main.tsp file and locate the "RepairServiceAgent" namespace. Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
+Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the `main.tsp` file and locate the `RepairServiceAgent` namespace. Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
 
 ```typespec
   op codeInterpreter is AgentCapabilities.CodeInterpreter;
@@ -206,6 +206,7 @@ You will assist the user in finding car repair records based on the information 
 - You are a repair service agent.
 - You can use the code interpreter to generate reports based on the data you have.
 - You can use the actions to create, update, and delete repairs.
+- When creating a repair item, if the user did not provide a description or date , use title as description and put todays date in format YYYY-MM-DD
 - Do not show any code or technical details to the user. 
 - Do not use any technical jargon or complex terms.
 
@@ -219,62 +220,27 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 
 - Select the agents toolkit's extension icon to open its activity bar from within your project.
 - In the activity bar of the toolkit under "LifeCycle" select "Provision" to package and upload the newly updated agent for testing. 
-- Next, go to [https://office.com/chat](https://office.com/chat) to open Copilot app and select the **RepairServiceAgent** from the right side of the screen under **Agents**.
+- Next, go back to the open Microsoft Edge browser tab and do a refresh. 
+- Select the **RepairServiceAgent** from the right side of the screen under **Agents**.
 
 - Start by using the conversation starter 'Create repair'. Replace parts of the prompt to add a title , then send it to the chat to initiate the interaction. For e.g.
 
-    `Create a new repair titled "New brake issue" and assign it to me.`
-  
-- You will get a confirmation dialog to confirm, proceed to confirm.
-
-![first-confirm-box](https://github.com/user-attachments/assets/e2343240-143f-48ac-bd05-bae487105aea)
-
-
- The agent will add the item and send the response adaptive card back to you. 
-
-![first-create-repair](https://github.com/user-attachments/assets/7fb66be4-5f94-4bab-9ef1-9498d03f42a9)
-
-  
-- Next, send the prompt below to recheck if item is added. 
-
-    `List all my repairs.`
-
-![incomplete-item](https://github.com/user-attachments/assets/e58d3762-ee72-4fe7-b28e-21062bc67d59)
-
-
-You'll see that the newly created item has been sent, but it’s missing both a description and a date. Resolve this using the AI stack integrated with Copilot.
-
-- Insert the following code above the *createRepair* operation to apply a special instruction: set today’s date as the default value and use the title as the default description for this operation only. 
-
-
-```typespec
-  @state(orchestratorState.reasoning, 
-      #{
-        instructions: """
-         When creating a repair item, if the user did not provide a description or date , use title as description and put todays date in format YYYY-MM-DD
-        """
-      })
-```
-
-- To test this new update, create another item. 
-
     `Create a new repair titled "rear camera issue" and assign it to me.`
 
-- The confirmation dialog if you notice has more metadata. Proceed to add the item by confirming the dialog.
+- The confirmation dialog if you notice has more metadata that what you sent, thanks to the new instructions. Proceed to add the item by confirming the dialog.
 
 ![new-confirmation](https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00)
  
 
- Again recheck if item is added with description and date.
+ Recheck if the item added.
 
   `List all my repairs.`
 
 ![prefilled-item](https://github.com/user-attachments/assets/e9564512-fa34-47ea-9130-9cbe1f2f92b5)
 
-
-You've successfully guided the agent to better recognize and address minor short comings from users.
-
-- Next, copy the prompt below to test the new new agent with new analytical capability with your data. 
+- Next, you will test the new analytical capability of your agent.
+- Open a new chat by selecting the **New chat** button on the top right corner of your agent.
+- Next, copy the prompt below and paste it to the message box and hit enter to send it.
 
     `Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.`
 

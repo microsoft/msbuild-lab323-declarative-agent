@@ -9,6 +9,8 @@ You can enable developer mode in a chat to allow you as a developer to understan
     ```
     -developer on
     ```
+The agent will respond with a success message if everything went well - `Successfully enabled developer mode.`
+
 - Next to test, send a prompt to interact with the agent like the one below.
 
    `Find out what Karin is working on.`
@@ -22,6 +24,8 @@ You can enable developer mode in a chat to allow you as a developer to understan
     -	Executed action info with detailed information about the request, latency, response data etc. 4️⃣
 
 ![agent-info](https://github.com/user-attachments/assets/b135f3b0-50f1-47a1-b608-a5a1b27b806e)
+
+- Try expanding the **Executed Actions** and you will see the request url, parameters passed, request header, response, latency etc. 
 
 
 ☑️ You've successfully completed the all exercises! Select **Next >** to go see the finish line 😎
