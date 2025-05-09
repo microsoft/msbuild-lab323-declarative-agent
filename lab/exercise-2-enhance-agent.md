@@ -213,15 +213,19 @@ Let’s take the updated agent who is also now a repairs analyst to test.
 
  The agent responds is with created item shown in a rich adaptive card.
 
+ ![create-repair-ac](https://github.com/user-attachments/assets/6da0a38f-5de3-485a-999e-c695389853f8)
+
+
  - Next, recheck reference cards work. Send below prompt in the conversation
 
-  `List all my repairs.`
+     `List all my repairs.`
 
 The agent with the list with each referenced with an adaptive card.
 
+![list-repairs](https://github.com/user-attachments/assets/880ad3aa-2ed3-4051-a68b-d988527d9d53)
 
-- Next, you will test the new analytical capability of your agent.
-- Open a new chat by selecting the **New chat** button on the top right corner of your agent.
+
+- Next, you will test the new analytical capability of your agent. Open a new chat by selecting the **New chat** button on the top right corner of your agent.
 - Next, copy the prompt below and paste it to the message box and hit enter to send it.
 
     `Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.`
