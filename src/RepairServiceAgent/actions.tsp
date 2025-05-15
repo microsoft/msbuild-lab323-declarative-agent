@@ -40,33 +40,7 @@ namespace RepairsAPI{
    * @param repair The repair to create.
    */
   @route("/repairs")  
-  @capabilities(#{
-    responseSemantics: #{
-      dataPath: "$",
-      properties: #{
-        title: "$.title",
-        subTitle: "$.description"      
-      },
-      staticTemplate: #{
-        $schema: "http://adaptivecards.io/schemas/adaptive-card.json",
-        type: "AdaptiveCard",
-        version: "1.5",
-      body: #[
-        #{
-        type: "TextBlock",
-      text: "🎉 \${if(title, title, 'N/A')} successfully added and assigned to \${if(assignedTo, assignedTo, 'N/A')} ", 
-      wrap: true,
-      weight: "Bolder",     
-      size: "Large"
-        }      
-      ] } }
-     })
-  @state(orchestratorState.reasoning, 
-      #{
-        instructions: """
-         When creating a repair item, if the user did not provide a description or date , use title as description and put todays date in format YYYY-MM-DD
-        """
-      })
+  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
   @post  op createRepair(@body repair: Repair): Repair;
 
   /**
@@ -124,8 +98,5 @@ namespace RepairsAPI{
     image?: string;    
   }
   
-  enum orchestratorState {
-    reasoning,
-    responding
-  }
+
 }

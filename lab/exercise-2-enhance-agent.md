@@ -171,12 +171,19 @@ Continue to add card response for the `createRepair` operation to show what the 
 ## Step 3:   Add code interpreter capabilities
 
 Declarative Agents can be extended to have many capabilities like OneDriveAndSharePoint, WebSearch, CodeInterpreter etc
-Next, you will enhance the agent by adding code interpreter capability to it. To do this, open the `main.tsp` file and locate the `RepairServiceAgent` namespace. 
+Next, you will enhance the agent by adding code interpreter capability to it.
+
+- To do this, open the `main.tsp` file and locate the `RepairServiceAgent` namespace.
+
 - Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.
 
 ```typespec
   op codeInterpreter is AgentCapabilities.CodeInterpreter;
 ```
+
+
+>[!TIP]
+> When you add above codeinterpreter operation, paste it inside the outer `RepairServiceAgent` namespace and not the `RepairServiceActions` namespace which defines the action of the agent.  
 
 Since the agent now supports additional functionality, update the instructions accordingly to reflect this enhancement.
 

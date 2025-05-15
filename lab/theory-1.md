@@ -10,20 +10,21 @@ As you build more agents for Copilot, you’ll notice that the final output is a
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | Microsoft 365 App Manifest        | A JSON file (`manifest.json`) that defines the standard Teams app manifest.                                                                                     | Yes      |
 | Declarative Agent Manifest        | A JSON file containing the agent's name, instructions, capabilities, conversation starters, and actions (if applicable).                                        | Yes      |
-| Plugin Manifest (Optional)        | A JSON file used to configure your action as an API plugin. Includes authentication, required fields, adaptive card responses, etc. Only needed if actions exist. | No       |
-| OpenAPI Spec (Optional)           | A JSON or YAML file defining your API. Required only if your agent includes actions.                                                                            | No       |
+| Plugin Manifest       | A JSON file used to configure your action as an API plugin. Includes authentication, required fields, adaptive card responses, etc. Only needed if actions exist. | No       |
+| OpenAPI Spec            | A JSON or YAML file defining your API. Required only if your agent includes actions.                                                                            | No       |
 
 ## Capabilities of a Declarative Agent
 
 You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access. They are called capabilities. Below are the ones supported in a Declarative Agent today: 
 
 - **Copilot Connectors** - let you centralize content on Microsoft 365. By importing external content to Microsoft 365, you not only make it easier to find relevant information, but you also let others in your organization discover new content.
-- **OneDrive and SharePoint** - let you provide URLs of files/sites in OneDrive and SharePoint, which will become the agent's knowledge base.
+- **OneDrive and SharePoint** - let you provide URLs of files/sites in OneDrive and SharePoint, which will part of the agent's knowledge base.
 - **Web search** - let you enable or disable web content as part of the agent's knowledge base. You can also pass around 4 websites URLs as source. 
 - **Code interpreter** - enables you to build an agent with capabilities to better solve math problems and, when needed, leverage Python code for complex data analysis or chart generation.
 - **GraphicArt** - enables you to build an agent for image or video generation using DALL·E.
 - **Email knowledge** - enables you to build an agent to acces a personal or shared mailbox, and optionally, a specific mailbox folder as knowledge.
 - **People knowledge** - enables you to build an agent to answer questions about individuals in an organization.
+- **Teams messages** - enables you to equip the agent to search through Teams channels, teams, meetings, 1:1 chats, and group chats.
 - **Dataverse knowledge** - enables you to add a Dataverse instance as a knowledge source.
 
 
