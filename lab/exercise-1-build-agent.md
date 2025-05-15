@@ -16,7 +16,7 @@ You will create an agent called **RepairServiceAgent**, which interacts with rep
 
 ## Step 2: Sign into the Microsoft 365 Agents Toolkit 
 
-You'll need to sign into the Microsoft 365 Agents Toolkit inorder to upload and test your agent from within it.
+You'll need to sign into the Microsoft 365 Agents Toolkit in order to upload and test your agent from within it.
 
 -	Within the project window, select the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> again from the left side menu. This will open the agent toolkit’s activity bar with sections like Accounts, Environment, Development etc. 
 -	Under "Accounts" section select "Sign in to Microsoft 365". This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or Cancel. Select "Sign in". 
@@ -104,7 +104,7 @@ namespace RepairsAPI{
 
 ```
 
-Next, replace the operation in the template code from "searchIssues" to a "listRepairs" which is a repair operation to get list of repairs.
+Next, replace the operation in the template code from "searchIssues" to "listRepairs" which is a repair operation to get the list of repairs.
 Replace the entire block of code starting just after the SERVER_URL definition and ending *before* the final closing braces with the snippet below. Be sure to leave the closing braces intact.
 
 ```typespec
